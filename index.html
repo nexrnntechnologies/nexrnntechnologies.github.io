@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>NexRNN Technologies – Digital Marketing & AI Solutions</title>
+    <meta name="description" content="NexRNN Technologies in Lucknow specializes in AI Videos, Graphic Design, Social Media Management, and Digital Marketing services to grow your brand online.">
+    <meta name="keywords" content="Digital Marketing, AI Videos, Social Media Management, Graphic Design, Brand Promotion, Lucknow Marketing Agency">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* CSS Reset & Global Styles */
+        :root {
+            --primary-color: #ffffff;
+            --secondary-color: #bbbbbb;
+            --background-color: #0a0a1a;
+            --card-background: #1a1a2e;
+            --gradient-start: #4a00e0;
+            --gradient-end: #8e2de2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--primary-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 2rem;
+        }
+        
+        section {
+            padding: 6rem 0;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        /* Header / Navigation */
+        .header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: transparent;
+            padding: 1.5rem 0;
+            transition: background-color 0.3s ease, padding 0.3s ease;
+        }
+
+        .header.scrolled {
+            background-color: rgba(10, 10, 26, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gradient-start);
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0a1a, #1a1a2e);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--gradient-start), var(--gradient-end), #0a0a1a, #1a1a2e);
+            background-size: 400% 400%;
+            animation: gradient-animation 15s ease infinite;
+            opacity: 0.3;
+        }
+        
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(74, 0, 224, 0.4);
+        }
+
+        /* About Us Section */
+        #about p {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--card-background);
+            padding: 2.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #2a2a3e;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--secondary-color);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-item {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .project-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .project-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(74, 0, 224, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .project-item:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-overlay h3 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+        
+        /* Project Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.85);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: var(--card-background);
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 700px;
+            position: relative;
+            animation: slide-in 0.5s ease;
+        }
+
+        @keyframes slide-in {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-btn {
+            color: var(--secondary-color);
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: var(--primary-color);
+        }
+        
+        #modal-project-title {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        #modal-project-description {
+            color: var(--secondary-color);
+        }
+
+        /* --- UPDATED CONTACT SECTION --- */
+        #contact h2 {
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        
+        .contact-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        
+        .contact-form-container {
+            background: var(--card-background);
+            padding: 2.5rem;
+            border-radius: 10px;
+            border: 1px solid #2a2a3e;
+        }
+
+        .contact-form-container h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .contact-form-container iframe {
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
+            border: none;
+        }
+
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+
+        .contact-details {
+            background: var(--card-background);
+            padding: 2.5rem;
+            border-radius: 10px;
+            border: 1px solid #2a2a3e;
+            height: 100%;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+
+        .contact-item .icon {
+            font-size: 1.2rem;
+            color: var(--gradient-start);
+            margin-right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: grid;
+            place-items: center;
+            background: rgba(74, 0, 224, 0.1);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .contact-item p {
+            margin: 0;
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+        }
+        .contact-item p strong {
+            display: block;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #2a2a3e;
+            height: 100%;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--card-background);
+            text-align: center;
+            padding: 2.5rem 0;
+        }
+
+        .social-icons a {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin: 0 0.75rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            color: var(--gradient-start);
+        }
+
+        .copyright {
+            margin-top: 1rem;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+        
+        /* On-Scroll Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+             .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h2 { font-size: 2rem; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            section { padding: 4rem 0; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 1rem; }
+            .hero-content h1 { font-size: 2rem; }
+            .hero-content p { font-size: 1rem; }
+            .contact-form-container iframe { height: 450px; }
+            .map-container iframe { min-height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="container navbar">
+            <a href="#hero" class="logo">NexRNN<span> Technologies</span></a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container hero-content">
+                <h1 class="animate-on-scroll">Empowering Brands with AI & Digital Innovation</h1>
+                <p class="animate-on-scroll">We help businesses stand out with creative and strategic digital solutions.</p>
+                <a href="#contact" class="cta-button animate-on-scroll">Let’s Connect</a>
+            </div>
+        </section>
+
+        <section id="about" class="container">
+            <h2 class="animate-on-scroll">About Us</h2>
+            <p class="animate-on-scroll">
+                NexRNN Technologies helps businesses amplify their online presence through a fusion of creative design, cutting-edge AI-powered video content, and strategic social media management. Our team, led by <strong>Abhiraj Singh</strong> and <strong>Janhavi Anant Kumar</strong>, is dedicated to crafting compelling brand narratives that connect with audiences and drive growth.
+            </p>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h2 class="animate-on-scroll">Our Core Services</h2>
+                <div class="services-grid">
+                    <div class="service-card animate-on-scroll">
+                        <i class="fas fa-robot"></i>
+                        <h3>AI Videos</h3>
+                        <p>Engaging, high-quality videos created with advanced AI technology to capture your audience's attention.</p>
+                    </div>
+                    <div class="service-card animate-on-scroll">
+                        <i class="fas fa-palette"></i>
+                        <h3>Graphic Design</h3>
+                        <p>Creative logos, posters, and social media visuals that define and elevate your brand identity.</p>
+                    </div>
+                    <div class="service-card animate-on-scroll">
+                        <i class="fas fa-share-alt"></i>
+                        <h3>Social Media Handling</h3>
+                        <p>Strategic management of LinkedIn, Instagram, Facebook, and more to build a strong online community.</p>
+                    </div>
+                    <div class="service-card animate-on-scroll">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Website Design</h3>
+                        <p>Modern, responsive, and user-friendly websites that provide an exceptional digital experience.</p>
+                    </div>
+                    <div class="service-card animate-on-scroll">
+                        <i class="fas fa-bullhorn"></i>
+                        <h3>Brand Promotion</h3>
+                        <p>Comprehensive digital marketing campaigns designed to increase your brand's visibility and reach.</p>
+                    </div>
+                    <div class="service-card animate-on-scroll">
+                        <i class="fas fa-video"></i>
+                        <h3>Video Editing</h3>
+                        <p>Professional post-production services to transform your raw footage into polished, compelling stories.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2 class="animate-on-scroll">Our Work</h2>
+                <div class="projects-grid">
+                    <div class="project-item animate-on-scroll" 
+                         data-title="E-commerce Brand Launch"
+                         data-description="We developed a full brand identity and social media launch strategy for a new e-commerce client. This included logo design, promotional AI videos, and an Instagram campaign that grew their following by 300% in the first month.">
+                        <img src="https://images.unsplash.com/photo-1558979158-65a1eaa08691?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Project 1 Thumbnail">
+                        <div class="project-overlay"><h3>E-commerce Brand Launch</h3></div>
+                    </div>
+                    <div class="project-item animate-on-scroll"
+                         data-title="Tech Startup Website"
+                         data-description="Designed and developed a sleek, modern website for a tech startup. The site is fully responsive, optimized for search engines, and features interactive elements to engage visitors and generate leads.">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Project 2 Thumbnail">
+                        <div class="project-overlay"><h3>Tech Startup Website</h3></div>
+                    </div>
+                    <div class="project-item animate-on-scroll"
+                         data-title="AI Video Ad Campaign"
+                         data-description="Created a series of compelling AI-generated video ads for a local service business. The campaign ran on Facebook and YouTube, resulting in a 40% increase in qualified leads and a 2x return on ad spend.">
+                        <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=600" alt="Project 3 Thumbnail">
+                        <div class="project-overlay"><h3>AI Video Ad Campaign</h3></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div id="project-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">×</span>
+                <h3 id="modal-project-title"></h3>
+                <p id="modal-project-description"></p>
+            </div>
+        </div>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="animate-on-scroll">Get In Touch</h2>
+                <div class="contact-layout">
+                    <div class="contact-form-container animate-on-scroll">
+                        <h3>Send us a Message</h3>
+                        <iframe src="https://forms.gle/q45PguUPCLCcEhEy9" title="Contact Form">Loading…</iframe>
+                    </div>
+
+                    <div class="contact-info-grid">
+                        <div class="contact-details animate-on-scroll">
+                            <div class="contact-item">
+                                <span class="icon"><i class="fas fa-map-marker-alt"></i></span>
+                                <p><strong>Address</strong>Lucknow, UP, India</p>
+                            </div>
+                            <div class="contact-item">
+                                <span class="icon"><i class="fas fa-envelope"></i></span>
+                                <p><strong>Email</strong>nexrnntechnologies@gmail.com</p>
+                            </div>
+                            <div class="contact-item">
+                                <span class="icon"><i class="fas fa-phone"></i></span>
+                                <p><strong>Phone</strong>+91 7520424645<br>+91 9984839891</p>
+                            </div>
+                        </div>
+                        <div class="map-container animate-on-scroll">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227821.9337575531!2d80.82293208034239!3d26.84862211114254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd991f32b16b%3A0x93ccba8909978be7!2sLucknow%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1725483253765!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Location Map"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <p class="copyright">Copyright © 2025 NexRNN Technologies. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- Sticky Header on Scroll ---
+            const header = document.querySelector('.header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // --- On-Scroll Reveal Animation ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            const elementsToAnimate = document.querySelectorAll('.animate-on-scroll');
+            elementsToAnimate.forEach(el => observer.observe(el));
+            
+            // --- Project Modal Popup Logic ---
+            const modal = document.getElementById('project-modal');
+            const modalTitle = document.getElementById('modal-project-title');
+            const modalDescription = document.getElementById('modal-project-description');
+            const closeBtn = document.querySelector('.close-btn');
+            const projectItems = document.querySelectorAll('.project-item');
+
+            projectItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const title = item.getAttribute('data-title');
+                    const description = item.getAttribute('data-description');
+                    
+                    modalTitle.textContent = title;
+                    modalDescription.textContent = description;
+                    
+                    modal.style.display = 'flex';
+                });
+            });
+
+            // Function to close modal
+            const closeModal = () => {
+                modal.style.display = 'none';
+            };
+
+            // Close modal events
+            closeBtn.addEventListener('click', closeModal);
+            window.addEventListener('click', (event) => {
+                if (event.target == modal) {
+                    closeModal();
+                }
+            });
+
+            // Close modal with Escape key
+            window.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
